@@ -15,6 +15,7 @@
       align-items: center;
       height: 100vh;
       text-align: center;
+      overflow: hidden;
     }
 
     h1 {
@@ -90,15 +91,77 @@
 
   <div class="message" id="msg"></div>
 
+  <!-- 🔊 Clap Sound -->
+  <audio id="clapSound" src="clap.mp3" preload="auto"></audio>
+
+  <!-- 🎉 Confetti Canvas -->
+  <canvas id="confetti" style="position:fixed; top:0; left:0; width:100%; height:100%; pointer-events:none;"></canvas>
+
   <script>
     function blowOut(flameEl) {
       flameEl.classList.add('blown');
       document.getElementById('msg').textContent = "🎉 Candle blown out! Happy Anniversary!";
-      // Redirect after 3 seconds
+
+      // ▶️ Try to play clap sound
+      const clapSound = document.getElementById("clapSound");
+      clapSound.play().catch(err => {
+        console.log("Autoplay blocked or error:", err);
+      });
+
+      // 🎉 Start confetti
+      startConfetti();
+
+      // ⏱️ Redirect after 3 seconds
       setTimeout(() => {
         window.location.href = "page3.html";
       }, 3000);
     }
+
+    // 🎊 Confetti Setup
+    const canvas = document.getElementById('confetti');
+    const ctx = canvas.getContext('2d');
+    let pieces = [];
+    let numberOfPieces = 100;
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+
+    function createConfetti() {
+      pieces = [];
+      for (let i = 0; i < numberOfPieces; i++) {
+        pieces.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          size: Math.random() * 8 + 4,
+          speed: Math.random() * 3 + 1,
+          color: `hsl(${Math.random() * 360}, 100%, 60%)`,
+          tilt: Math.random() * 10 - 5,
+        });
+      }
+    }
+
+    function updateConfetti() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      pieces.forEach(p => {
+        p.y += p.speed;
+        p.x += Math.sin(p.y * 0.01) * 2;
+        ctx.fillStyle = p.color;
+        ctx.beginPath();
+        ctx.ellipse(p.x, p.y, p.size, p.size * 0.6, p.tilt, 0, 2 * Math.PI);
+        ctx.fill();
+      });
+    }
+
+    function startConfetti() {
+      resizeCanvas();
+      createConfetti();
+      const interval = setInterval(updateConfetti, 20);
+      setTimeout(() => clearInterval(interval), 3000); // Stop after 3s
+    }
+
+    window.addEventListener('resize', resizeCanvas);
   </script>
 
 </body>
