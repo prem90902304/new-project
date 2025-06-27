@@ -14,8 +14,13 @@
     Your browser does not support the audio element.
   </audio>
 
+  <!-- Optional: Message in center -->
+  <h1 style="position: absolute; top: 40%; width: 100%; text-align: center; color: #d63384; font-size: 40px; text-shadow: 2px 2px white;">
+    Happy Anniversary ❤️<br>Click a Heart to Continue
+  </h1>
+
+  <!-- JS: Falling Hearts + Click to Go to Page 2 -->
   <script>
-    // Generate multiple falling hearts
     const heartCount = 30;
     for (let i = 0; i < heartCount; i++) {
       const heart = document.createElement('div');
@@ -25,6 +30,12 @@
       heart.style.left = Math.random() * 100 + 'vw';
       heart.style.animationDuration = (3 + Math.random() * 5) + 's';
       heart.style.fontSize = (20 + Math.random() * 20) + 'px';
+
+      // Click a heart to go to page 2
+      heart.addEventListener('click', () => {
+        window.location.href = 'page2.html';
+      });
+
       document.body.appendChild(heart);
     }
   </script>
