@@ -23,8 +23,18 @@
       transition: background 0.3s ease;
       z-index: 10;
     }
+
     .next-btn:hover {
       background: #ff1493;
+    }
+
+    .title {
+      text-align: center;
+      font-family: 'Great Vibes', cursive;
+      font-size: 2.8rem; /* Reduced by 2 points (original was 3rem) */
+      margin-top: 20px;
+      color: #ff69b4;
+      text-shadow: 0 0 10px #ff1493;
     }
   </style>
 </head>
@@ -53,19 +63,10 @@
   <div class="heart" style="left: 30%; animation-delay: 3s;"></div>
 
   <!-- 🎵 Background Music -->
-  <audio id="bgMusic" autoplay muted loop>
+  <audio autoplay loop>
     <source src="love-music.mp3" type="audio/mpeg" />
     Your browser does not support the audio element.
   </audio>
-
-  <script>
-    // Enable music after first interaction (click/tap)
-    window.addEventListener("click", function () {
-      const audio = document.getElementById("bgMusic");
-      audio.muted = false;
-      audio.play();
-    }, { once: true });
-  </script>
 
   <!-- 💌 Next Button -->
   <button onclick="window.location.href='page4.html'" class="next-btn">Next 💌</button>
