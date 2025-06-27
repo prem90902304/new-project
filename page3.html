@@ -6,11 +6,34 @@
   <title>Love Lamp</title>
   <link rel="stylesheet" href="style3.css" />
   <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&display=swap" rel="stylesheet">
+  <style>
+    .next-btn {
+      position: absolute;
+      bottom: 30px;
+      right: 30px;
+      padding: 12px 24px;
+      background: #ff69b4;
+      color: white;
+      border: none;
+      border-radius: 30px;
+      font-size: 1.2rem;
+      font-family: 'Great Vibes', cursive;
+      cursor: pointer;
+      box-shadow: 0 0 15px #ff69b4;
+      transition: background 0.3s ease;
+      z-index: 10;
+    }
+    .next-btn:hover {
+      background: #ff1493;
+    }
+  </style>
 </head>
 <body>
 
-  <div class="title">💖 Happy Anniversary Ammu 💖</div>
+  <!-- 🎉 Title -->
+  <div class="title">💖Happy Anniversary Ammu💖</div>
 
+  <!-- 💡 Love Lamp -->
   <div class="lamp-wrapper">
     <div class="scene">
       <div class="photo"></div>
@@ -22,20 +45,30 @@
     <div class="base"></div>
   </div>
 
-  <!-- Floating hearts -->
+  <!-- 💕 Floating Hearts -->
   <div class="heart" style="left: 20%; animation-delay: 0s;"></div>
   <div class="heart" style="left: 40%; animation-delay: 2s;"></div>
   <div class="heart" style="left: 60%; animation-delay: 4s;"></div>
   <div class="heart" style="left: 80%; animation-delay: 1s;"></div>
   <div class="heart" style="left: 30%; animation-delay: 3s;"></div>
 
-  <!-- Background Music -->
-<audio autoplay loop>
-  <source src="love-music.mp3" type="audio/mpeg" />
-</audio>
+  <!-- 🎵 Background Music -->
+  <audio id="bgMusic" autoplay muted loop>
+    <source src="love-music.mp3" type="audio/mpeg" />
+    Your browser does not support the audio element.
+  </audio>
 
-<!-- 💌 Next Button -->
-<button onclick="window.location.href='page4.html'" class="next-btn">Next 💌</button>
+  <script>
+    // Enable music after first interaction (click/tap)
+    window.addEventListener("click", function () {
+      const audio = document.getElementById("bgMusic");
+      audio.muted = false;
+      audio.play();
+    }, { once: true });
+  </script>
+
+  <!-- 💌 Next Button -->
+  <button onclick="window.location.href='page4.html'" class="next-btn">Next 💌</button>
 
 </body>
 </html>
