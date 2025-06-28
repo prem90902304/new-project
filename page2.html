@@ -102,6 +102,16 @@
       flameEl.classList.add('blown');
       document.getElementById('msg').textContent = "🕯️ Candle blown... and 8 beautiful months of love celebrated! 💖 Happy 8th Month Anniversary, my love! 💑🎉";
 
+      // 🗣️ Speak the message aloud
+      const anniversaryMessage = "Candle blown... and 8 beautiful months of love celebrated! Happy 8th Month Anniversary, my love!";
+      const speech = new SpeechSynthesisUtterance(anniversaryMessage);
+      speech.rate = 1; // Normal speed
+      speech.pitch = 1.2; // Slightly more emotional tone
+      speech.volume = 1; // Max volume
+      speech.lang = 'en-US'; // Set to English
+      speechSynthesis.speak(speech);
+      
+
       // ▶️ Try to play clap sound
       const clapSound = document.getElementById("clapSound");
       clapSound.play().catch(err => {
