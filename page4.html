@@ -41,14 +41,14 @@
     }
 
     .content {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      color: #fff;
-      z-index: 2;
-    }
+    position: absolute;
+    top: 40px; /* Moved near top */
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    color: #fff;
+    z-index: 2;
+  }
 
     h1 {
       font-size: 4rem;
@@ -177,7 +177,7 @@
       top: -50px;
       width: 30px;
       height: 30px;
-      background-image: url('https://i.postimg.cc/3RqBsQr1/rose-petal.png');
+      background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.istockphoto.com%2Fphotos%2Frose-petals-falling&psig=AOvVaw2g8HwBvTB-txOZBUollhZo&ust=1751199718694000&source=images&cd=vfe&opi=89978449&ved=0CBUQjRxqFwoTCLCV_LuNlI4DFQAAAAAdAAAAABAE');
       background-size: cover;
       background-repeat: no-repeat;
       animation: fall 10s linear infinite;
@@ -194,10 +194,10 @@
 <body>
 
   <!-- 🎥 Background Video -->
-  <video autoplay muted loop class="bg-video">
-    <source src="20250627223519.mp4" type="video/mp4">
-    Your browser does not support the video tag.
-  </video>
+  <video autoplay muted loop playsinline class="bg-video">
+  <source src="20250627223519.mp4" type="video/mp4">
+  Your browser does not support the video tag.
+</video>
 
   <!-- 🔲 Overlay -->
   <div class="overlay"></div>
