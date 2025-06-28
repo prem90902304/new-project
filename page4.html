@@ -41,6 +41,19 @@
       z-index: -1;
     }
 
+    .center-video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 80vw;
+      max-width: 720px;
+      border: 4px solid #ff69b4;
+      border-radius: 16px;
+      box-shadow: 0 0 25px rgba(255, 105, 180, 0.8);
+      z-index: 3;
+    }
+
     .top-text {
       position: absolute;
       top: 20px;
@@ -50,22 +63,42 @@
       text-align: center;
       color: #ff69b4;
       text-shadow: 0 0 10px #ff69b4, 0 0 20px #ff1493;
-      z-index: 2;
+      z-index: 4;
     }
 
-    .content {
+    .bottom-text {
       position: absolute;
-      top: 50%;
+      bottom: 40px;
       left: 50%;
-      transform: translate(-50%, -50%);
-      text-align: center;
-      z-index: 2;
+      transform: translateX(-50%);
+      font-size: 1.8rem;
+      color: white;
+      text-shadow: 0 0 8px #fff;
+      z-index: 4;
+      animation: fadeInUp 3s ease-out;
     }
 
-    p {
-      font-size: 1.6rem;
-      margin-top: 15px;
-      text-shadow: 0 0 10px #fff;
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translate(-50%, 20px); }
+      to   { opacity: 1; transform: translate(-50%, 0); }
+    }
+
+    .rose {
+      position: absolute;
+      top: -50px;
+      width: 30px;
+      height: 30px;
+      background-image: url('rose.png');
+      background-size: cover;
+      background-repeat: no-repeat;
+      animation: fall 12s linear infinite;
+      z-index: 1;
+      pointer-events: none;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
     }
 
     .heart {
@@ -113,30 +146,12 @@
       50% { transform: scale(1.3); opacity: 1; }
     }
 
-    .rose {
-      position: absolute;
-      top: -50px;
-      width: 30px;
-      height: 30px;
-      background-image: url('rose.png');
-      background-size: cover;
-      background-repeat: no-repeat;
-      animation: fall 10s linear infinite;
-      z-index: 1;
-      pointer-events: none;
-    }
-
-    @keyframes fall {
-      0% { transform: translateY(0) rotate(0deg); opacity: 1; }
-      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
-    }
-
     .back-btn {
       position: absolute;
-      bottom: 30px;
-      right: 30px;
+      bottom: 20px;
+      right: 20px;
       padding: 10px 25px;
-      font-size: 1.4rem;
+      font-size: 1.3rem;
       border: none;
       border-radius: 25px;
       background: #ff69b4;
@@ -144,7 +159,7 @@
       cursor: pointer;
       font-family: 'Great Vibes', cursive;
       box-shadow: 0 0 15px #ff69b4;
-      z-index: 2;
+      z-index: 4;
     }
 
     .back-btn:hover {
@@ -160,11 +175,30 @@
     Your browser does not support the video tag.
   </video>
 
-  <!-- 🔲 Dark Overlay -->
+  <!-- 🔲 Overlay -->
   <div class="overlay"></div>
+
+  <!-- 🎞️ Foreground Center Video -->
+  <video autoplay muted loop playsinline class="center-video">
+    <source src="center-video.mp4" type="video/mp4">
+    Your browser does not support the video tag.
+  </video>
 
   <!-- 💞 Top Title -->
   <div class="top-text">Forever in Love 💞</div>
+
+  <!-- 🌹 Falling Petals -->
+  <div class="rose" style="left: 10%; animation-delay: 0s;"></div>
+  <div class="rose" style="left: 30%; animation-delay: 2s; width: 25px; height: 25px;"></div>
+  <div class="rose" style="left: 50%; animation-delay: 4s; width: 35px; height: 35px;"></div>
+  <div class="rose" style="left: 70%; animation-delay: 1s; width: 28px; height: 28px;"></div>
+  <div class="rose" style="left: 90%; animation-delay: 3s; width: 32px; height: 32px;"></div>
+
+  <!-- ❤️ Glowing Hearts -->
+  <div class="glow-heart" style="top: 20%; left: 10%;"></div>
+  <div class="glow-heart" style="top: 30%; left: 80%;"></div>
+  <div class="glow-heart" style="top: 60%; left: 20%;"></div>
+  <div class="glow-heart" style="top: 75%; left: 70%;"></div>
 
   <!-- 💗 Floating Hearts -->
   <div class="heart" style="left: 15%; animation-delay: 0s;"></div>
@@ -173,27 +207,12 @@
   <div class="heart" style="left: 75%; animation-delay: 1s;"></div>
   <div class="heart" style="left: 90%; animation-delay: 3s;"></div>
 
-  <!-- ❤️ Glowing Hearts -->
-  <div class="glow-heart" style="top: 20%; left: 10%;"></div>
-  <div class="glow-heart" style="top: 30%; left: 80%;"></div>
-  <div class="glow-heart" style="top: 60%; left: 20%;"></div>
-  <div class="glow-heart" style="top: 75%; left: 70%;"></div>
+  <!-- 💬 Bottom Message -->
+  <div class="bottom-text">Every moment with you is a beautiful memory.</div>
 
-  <!-- 🌹 Rose Petals -->
-  <div class="rose" style="left: 10%;"></div>
-  <div class="rose" style="left: 20%; animation-delay: 2s;"></div>
-  <div class="rose" style="left: 40%; animation-delay: 4s;"></div>
-  <div class="rose" style="left: 60%; animation-delay: 6s;"></div>
-  <div class="rose" style="left: 80%; animation-delay: 1s;"></div>
-
-  <!-- 💌 Message (Optional Center) -->
-  <div class="content">
-    <p>Every moment with you is a beautiful memory.</p>
-  </div>
-
-  <!-- 🔊 Music -->
+  <!-- 🔊 Background Music -->
   <audio autoplay loop>
-    <source src="love-music.mp3" type="audio/mpeg" />
+    <source src="love-music1.mp3" type="audio/mpeg" />
   </audio>
 
   <!-- 🔙 Back Button -->
